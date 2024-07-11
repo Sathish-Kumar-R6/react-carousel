@@ -6,8 +6,13 @@ import { fixupConfigRules } from "@eslint/compat";
 
 
 export default [
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...fixupConfigRules(pluginReactConfig),
+	{ languageOptions: { globals: globals.browser } },
+	pluginJs.configs.recommended,
+	...tseslint.configs.recommended,
+	...fixupConfigRules(pluginReactConfig),
+	{
+		rules: {
+			"react/react-in-jsx-scope": "off"
+		}
+	}
 ];

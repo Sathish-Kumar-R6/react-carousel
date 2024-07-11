@@ -1,0 +1,36 @@
+.carousel {
+	position: relative;
+	display: flex;
+	width: 600px;
+	overflow: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.image-container {
+	display: flex;
+	gap: 20px;
+	flex-direction: row;
+	height: 400px;
+}
+
+.isCurrentImage {
+	opacity: 1;
+}
+
+.svg-back {
+	cursor: pointer;
+	position: absolute;
+	left: 20%;
+}
+
+.svg-next {
+	cursor: pointer;
+	position: absolute;
+	right: 20%
+}
+
+.other-images {
+	opacity: 0;
+	display: none;
+}
