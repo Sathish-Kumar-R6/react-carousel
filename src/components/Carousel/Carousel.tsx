@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { HTMLAttributes, useState } from "react";
 import SvgBack from "../../icons/SvgBack";
 import SvgNext from "../../icons/SvgNext";
 import classNames from "classnames/bind";
@@ -6,9 +6,9 @@ import styles from "./Carousel.module.css";
 
 const cx = classNames.bind(styles);
 
-type CarouselProps = {
+interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
 	images: string[];
-};
+}
 function Carousel({ images }: CarouselProps) {
 	const [current, setCurrent] = useState(0);
 	if (images.length === 0) {
