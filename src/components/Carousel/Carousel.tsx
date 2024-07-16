@@ -31,6 +31,10 @@ function Carousel({ images }: CarouselProps) {
 		}
 	};
 
+	const handleIndicatorClick = (slideIndex: number) => {
+		setCurrent(slideIndex);
+	};
+
 	return (
 		<div className={cx("carousel")}>
 			<SvgBack
@@ -38,22 +42,32 @@ function Carousel({ images }: CarouselProps) {
 				className={cx("svg-back")}
 				onClick={handleSetPrev}
 			/>
-			<div className={cx("image-container")}>
-				{images.map((img, id) => {
-					const isCurrentImage = id === current;
+			{images.map((img, id) => {
+				const isCurrentImage = id === current;
+				return (
+					<img
+						src={img}
+						style={{ width: "400px" }}
+						className={cx("images", { "other-images": !isCurrentImage })}
+						key={img}
+					/>
+				);
+			})}
+			<span className={cx("dot-container")}>
+				{images.map((img, indicator) => {
+					const isCurrentIndicator = indicator === current;
 					return (
-						<img
-							src={img}
-							style={{ width: "400px" }}
-							className={cx(
-								{ "other-images": !isCurrentImage },
-								{ isCurrentImage },
-							)}
+						<span
 							key={img}
-						/>
+							onClick={() => handleIndicatorClick(indicator)}
+							className={cx("carousel-dot", {
+								"current-indicator": isCurrentIndicator,
+							})}
+						></span>
 					);
 				})}
-			</div>
+			</span>
+
 			<SvgNext
 				size="mediumplus"
 				className={cx("svg-next")}
